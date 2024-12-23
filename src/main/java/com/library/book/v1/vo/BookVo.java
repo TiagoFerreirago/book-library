@@ -1,53 +1,43 @@
-package com.library.book.model;
+package com.library.book.v1.vo;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import org.springframework.hateoas.RepresentationModel;
 
-@Entity
-@Table(name="books")
-public class Books implements Serializable {
+import com.github.dozermapper.core.Mapping;
+
+public class BookVo extends RepresentationModel<BookVo> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	private Long id;
-	@Column(name= "author", nullable= false, length = 40)
-	private String autor;
-	@Column(name = "launch_date", nullable = false)
+	@Mapping("id")
+	private Long key;
 	
+	private String autor;
 	private LocalDateTime dateTime;
-	@Column(nullable= false, length = 15)
 	private Double price;
-	@Column(name= "title", nullable= false, columnDefinition = "TEXT")
 	private String text;
 	
-	public Books() {
+	public BookVo() {
 		
 	}
 
-	public Books(Long id, String autor, LocalDateTime dateTime, Double price, String text) {
-		this.id = id;
+	public BookVo(Long key, String autor, LocalDateTime dateTime, Double price, String text) {
+		this.key = key;
 		this.autor = autor;
 		this.dateTime = dateTime;
 		this.price = price;
 		this.text = text;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getKey() {
+		return key;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setKey(Long key) {
+		this.key = key;
 	}
 
 	public String getAutor() {
@@ -84,22 +74,26 @@ public class Books implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(autor, dateTime, id, price, text);
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(autor, dateTime, key, price, text);
+		return result;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Books other = (Books) obj;
+		BookVo other = (BookVo) obj;
 		return Objects.equals(autor, other.autor) && Objects.equals(dateTime, other.dateTime)
-				&& Objects.equals(id, other.id) && Objects.equals(price, other.price)
+				&& Objects.equals(key, other.key) && Objects.equals(price, other.price)
 				&& Objects.equals(text, other.text);
 	}
 
 	
 }
+	
