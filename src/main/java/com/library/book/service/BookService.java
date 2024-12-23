@@ -14,9 +14,9 @@ import com.library.book.repository.BookRepository;
 import com.library.book.v1.vo.BookVo;
 
 @Service
-public class BookServices {
+public class BookService {
 	
-	private Logger logger = Logger.getLogger(BookServices.class.getName());
+	private Logger logger = Logger.getLogger(BookService.class.getName());
 	
 	@Autowired
 	public BookRepository repository;
