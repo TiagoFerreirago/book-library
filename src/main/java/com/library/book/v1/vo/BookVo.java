@@ -15,21 +15,21 @@ public class BookVo extends RepresentationModel<BookVo> implements Serializable 
 	@Mapping("id")
 	private Long key;
 	
-	private String autor;
-	private LocalDateTime dateTime;
+	private String author;
+	private LocalDateTime launchDate;
 	private Double price;
-	private String text;
+	private String title;
 	
 	public BookVo() {
 		
 	}
 
-	public BookVo(Long key, String autor, LocalDateTime dateTime, Double price, String text) {
+	public BookVo(Long key, String author, LocalDateTime launchDate, Double price, String title) {
 		this.key = key;
-		this.autor = autor;
-		this.dateTime = dateTime;
+		this.author = author;
+		this.launchDate = launchDate;
 		this.price = price;
-		this.text = text;
+		this.title = title;
 	}
 
 	public Long getKey() {
@@ -40,20 +40,20 @@ public class BookVo extends RepresentationModel<BookVo> implements Serializable 
 		this.key = key;
 	}
 
-	public String getAutor() {
-		return autor;
+	public String getAuthor() {
+		return author;
 	}
 
-	public void setAutor(String autor) {
-		this.autor = autor;
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 
-	public LocalDateTime getDateTime() {
-		return dateTime;
+	public LocalDateTime getLaunchDate() {
+		return launchDate;
 	}
 
-	public void setDateTime(LocalDateTime dateTime) {
-		this.dateTime = dateTime;
+	public void setLaunchDate(LocalDateTime launchDate) {
+		this.launchDate = launchDate;
 	}
 
 	public Double getPrice() {
@@ -64,19 +64,19 @@ public class BookVo extends RepresentationModel<BookVo> implements Serializable 
 		this.price = price;
 	}
 
-	public String getText() {
-		return text;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setText(String text) {
-		this.text = text;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + Objects.hash(autor, dateTime, key, price, text);
+		result = prime * result + Objects.hash(author, key, launchDate, price, title);
 		return result;
 	}
 
@@ -89,9 +89,9 @@ public class BookVo extends RepresentationModel<BookVo> implements Serializable 
 		if (getClass() != obj.getClass())
 			return false;
 		BookVo other = (BookVo) obj;
-		return Objects.equals(autor, other.autor) && Objects.equals(dateTime, other.dateTime)
-				&& Objects.equals(key, other.key) && Objects.equals(price, other.price)
-				&& Objects.equals(text, other.text);
+		return Objects.equals(author, other.author) && Objects.equals(key, other.key)
+				&& Objects.equals(launchDate, other.launchDate) && Objects.equals(price, other.price)
+				&& Objects.equals(title, other.title);
 	}
 
 	

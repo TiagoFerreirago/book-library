@@ -21,25 +21,25 @@ public class Book implements Serializable {
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;
 	@Column(name= "author", nullable= false, length = 40)
-	private String autor;
+	private String author;
 	@Column(name = "launch_date", nullable = false)
 	
-	private LocalDateTime dateTime;
+	private LocalDateTime launchDate;
 	@Column(nullable= false, length = 15)
 	private Double price;
 	@Column(name= "title", nullable= false, columnDefinition = "TEXT")
-	private String text;
+	private String title;
 	
 	public Book() {
 		
 	}
 
-	public Book(Long id, String autor, LocalDateTime dateTime, Double price, String text) {
+	public Book(Long id, String author, LocalDateTime launchDate, Double price, String title) {
 		this.id = id;
-		this.autor = autor;
-		this.dateTime = dateTime;
+		this.author = author;
+		this.launchDate = launchDate;
 		this.price = price;
-		this.text = text;
+		this.title = title;
 	}
 
 	public Long getId() {
@@ -50,20 +50,20 @@ public class Book implements Serializable {
 		this.id = id;
 	}
 
-	public String getAutor() {
-		return autor;
+	public String getAuthor() {
+		return author;
 	}
 
-	public void setAutor(String autor) {
-		this.autor = autor;
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 
-	public LocalDateTime getDateTime() {
-		return dateTime;
+	public LocalDateTime getLaunchDate() {
+		return launchDate;
 	}
 
-	public void setDateTime(LocalDateTime dateTime) {
-		this.dateTime = dateTime;
+	public void setLaunchDate(LocalDateTime launchDate) {
+		this.launchDate = launchDate;
 	}
 
 	public Double getPrice() {
@@ -74,17 +74,17 @@ public class Book implements Serializable {
 		this.price = price;
 	}
 
-	public String getText() {
-		return text;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setText(String text) {
-		this.text = text;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(autor, dateTime, id, price, text);
+		return Objects.hash(author, id, launchDate, price, title);
 	}
 
 	@Override
@@ -96,9 +96,9 @@ public class Book implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Book other = (Book) obj;
-		return Objects.equals(autor, other.autor) && Objects.equals(dateTime, other.dateTime)
-				&& Objects.equals(id, other.id) && Objects.equals(price, other.price)
-				&& Objects.equals(text, other.text);
+		return Objects.equals(author, other.author) && Objects.equals(id, other.id)
+				&& Objects.equals(launchDate, other.launchDate) && Objects.equals(price, other.price)
+				&& Objects.equals(title, other.title);
 	}
 
 	
