@@ -6,12 +6,15 @@ import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.library.book.controller.BookController;
 import com.library.book.exceptions.RequiredObjectIsNullException;
 import com.library.book.exceptions.ResourceNotFoundException;
 import com.library.book.mapper.DozerMapper;
 import com.library.book.model.Book;
 import com.library.book.repository.BookRepository;
 import com.library.book.v1.vo.BookVo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @Service
 public class BookService {
@@ -26,7 +29,7 @@ public class BookService {
 		logger.info("Finding all book!");
 
 		var books = DozerMapper.parseListsObjects(repository.findAll(), BookVo.class);
-		
+		books.stream().map(p -> p.add(linkTo(methodOn(BookController.class).findById(p.getKey())).withSelfRel()));
 		return books;
 	}
 
@@ -37,6 +40,7 @@ public class BookService {
 		var entity = repository.findById(id)
 			.orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
 		var vo = DozerMapper.parseObject(entity, BookVo.class);
+		vo.add(linkTo(methodOn(BookController.class).findById(id)).withSelfRel());
 		return vo;
 	}
 	
@@ -47,6 +51,7 @@ public class BookService {
 		logger.info("Creating one book!");
 		var entity = DozerMapper.parseObject(book, Book.class);
 		var vo =  DozerMapper.parseObject(repository.save(entity), BookVo.class);
+		vo.add(linkTo(methodOn(BookController.class).findById(book.getKey())).withSelfRel());
 		return vo;
 	}
 	
@@ -65,6 +70,7 @@ public class BookService {
 		entity.setTitle(book.getTitle());
 		
 		var vo =  DozerMapper.parseObject(repository.save(entity), BookVo.class);
+		vo.add(linkTo(methodOn(BookController.class).findById(book.getKey())).withSelfRel());
 		return vo;
 	}
 	
