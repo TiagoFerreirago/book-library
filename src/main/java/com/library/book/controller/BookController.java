@@ -45,7 +45,7 @@ public class BookController {
 		return service.findAll();
 	}
 	
-	@GetMapping(produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML })
+	@GetMapping(value = "/{id}",produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML })
 	@Operation(summary = "Finds a Book", description = "Finds a Book", tags = {"Book"},
 	responses = {@ApiResponse(description = "Sucess", responseCode = "200", content = @Content(schema = @Schema(implementation = BookVo.class))),
 			@ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),

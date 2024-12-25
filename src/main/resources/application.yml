@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/stark_books?useTimezone=true&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/library?serverTimezone=UTC
     username: root
     password: 91349808
   jpa:
