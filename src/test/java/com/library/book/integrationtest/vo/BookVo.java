@@ -1,20 +1,15 @@
-package com.library.book.v1.vo;
+package com.library.book.integrationtest.vo;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-import org.springframework.hateoas.RepresentationModel;
-
-import com.github.dozermapper.core.Mapping;
-
-public class BookVo extends RepresentationModel<BookVo> implements Serializable {
+public class BookVo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Mapping("id")
-	private Long key;
-	
+
+	private Long id;
 	private String author;
 	private LocalDateTime launchDate;
 	private Double price;
@@ -24,20 +19,20 @@ public class BookVo extends RepresentationModel<BookVo> implements Serializable 
 		
 	}
 
-	public BookVo(Long key, String author, LocalDateTime launchDate, Double price, String title) {
-		this.key = key;
+	public BookVo(Long id, String author, LocalDateTime launchDate, Double price, String title) {
+		this.id = id;
 		this.author = author;
 		this.launchDate = launchDate;
 		this.price = price;
 		this.title = title;
 	}
 
-	public Long getKey() {
-		return key;
+	public Long getid() {
+		return id;
 	}
 
-	public void setKey(Long key) {
-		this.key = key;
+	public void setid(Long id) {
+		this.id = id;
 	}
 
 	public String getAuthor() {
@@ -76,7 +71,7 @@ public class BookVo extends RepresentationModel<BookVo> implements Serializable 
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + Objects.hash(author, key, launchDate, price, title);
+		result = prime * result + Objects.hash(author, id, launchDate, price, title);
 		return result;
 	}
 
@@ -89,10 +84,10 @@ public class BookVo extends RepresentationModel<BookVo> implements Serializable 
 		if (getClass() != obj.getClass())
 			return false;
 		BookVo other = (BookVo) obj;
-		return Objects.equals(author, other.author) && Objects.equals(key, other.key)
+		return Objects.equals(author, other.author) && Objects.equals(id, other.id)
 				&& Objects.equals(launchDate, other.launchDate) && Objects.equals(price, other.price)
 				&& Objects.equals(title, other.title);
 	}
-
+	
 }
 	
