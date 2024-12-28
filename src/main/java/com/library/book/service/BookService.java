@@ -29,7 +29,7 @@ public class BookService {
 		logger.info("Finding all book!");
 
 		var books = DozerMapper.parseListsObjects(repository.findAll(), BookVo.class);
-		books.stream().map(p -> p.add(linkTo(methodOn(BookController.class).findById(p.getKey())).withSelfRel()));
+		books.stream().forEach(p -> p.add(linkTo(methodOn(BookController.class).findById(p.getKey())).withSelfRel()));
 		return books;
 	}
 
