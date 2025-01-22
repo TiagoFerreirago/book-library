@@ -8,10 +8,10 @@
 		<version>3.0.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>br.com.erudio</groupId>
-	<artifactId>rest-with-spring-boot-and-java-erudio</artifactId>
+	<groupId>com.library.book</groupId>
+	<artifactId>rest-with-spring-boot-and-java-library</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>rest-with-spring-boot-and-java-erudio</name>
+	<name>rest-with-spring-boot-and-java-library</name>
 	<properties>
 		<java.version>18</java.version>
 		<dozer.version>6.4.0</dozer.version>
